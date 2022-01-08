@@ -54,12 +54,10 @@ ReceiptPrinter(int columns) : columns(columns)
     std::string formatLineWithWhitespace(const std::string &name, const std::string &value) const
     {
         int whitespaceSize = columns - name.length() - value.length();
-        std::string whitespace;
-//        char whitespace[whitespaceSize];
+        char whitespace[whitespaceSize];
         for (int i = 0; i < whitespaceSize; i++)
         {
-            whitespace.append(" ");
-//            whitespace[i] = " ";
+            whitespace[i] = " ";
         }
         return name + whitespace + value + "\n";
     }
