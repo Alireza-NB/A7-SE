@@ -1,9 +1,9 @@
 #include "ReceiptItem.h"
 
-ReceiptItem::ReceiptItem(const Product& product, double quantity, double price, double totalPrice)
+ReceiptItem::ReceiptItem(Product* product, double quantity, double price, double totalPrice)
     : product(product), price(price), totalPrice(totalPrice), quantity(quantity) {}
 
-Product ReceiptItem::getProduct() const {
+Product* ReceiptItem::getProduct() const {
     return product;
 }
 

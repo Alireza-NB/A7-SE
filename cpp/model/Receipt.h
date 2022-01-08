@@ -8,9 +8,9 @@
 
 class Receipt {
 public:
-    std::vector<ReceiptItem> getItems() const;
+    std::vector<ReceiptItem*> getItems() const;
 
-    std::vector<Discount> getDiscounts() const;
+    std::vector<Discount*> getDiscounts() const;
 
     double getTotalPrice() const;
 
@@ -19,8 +19,8 @@ public:
     void addProduct(const Product& product, double quantity, double price, double totalPrice);
 
 private:
-    std::vector<ReceiptItem> items;
-    std::vector<Discount> discounts;
+    std::vector<ReceiptItem*> items;
+    std::vector<Discount*> discounts;
 };
 
 

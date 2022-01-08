@@ -11,19 +11,19 @@
 
 class ShoppingCart {
 public:
-    std::vector<ProductQuantity> getItems() const;
+    std::vector<ProductQuantity*> getItems() const;
 
-    std::map<Product, double> getProductQuantities() const;
+    std::map<Product*, double> getProductQuantities() const;
 
-    void addItem(const Product& product);
+    void addItem(Product* product);
 
-    void addItemQuantity(const Product& product, double quantity);
+    void addItemQuantity(Product* product, double quantity);
 
-    void handleOffers(Receipt& receipt, std::map<Product, Offer> offers, SupermarketCatalog* catalog);
+    void handleOffers(Receipt& receipt, std::map<Product*, Offer> offers, SupermarketCatalog* catalog);
 
 private:
-    std::vector<ProductQuantity> items;
-    std::map<Product, double> productQuantities;
+    std::vector<ProductQuantity*> items;
+    std::map<Product*, double> productQuantities;
 };
 
 

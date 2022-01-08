@@ -9,7 +9,7 @@ class Product {
 public:
     Product() = default;
     
-    Product(const std::string& name, const ProductUnit& unit);
+    Product(const std::string& name, ProductUnit *unit);
 
     std::string getName() const;
 
@@ -29,7 +29,7 @@ public:
 
 private:
     std::string name;
-    ProductUnit unit;
+    ProductUnit *unit;
 
 };
 

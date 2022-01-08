@@ -8,7 +8,7 @@
 class Offer {
 public:
     Offer() = default;
-    Offer(const SpecialOfferType& offerType, const Product& product, double argument);
+    Offer(const SpecialOfferType& offerType, Product *product, double argument);
 
     SpecialOfferType getOfferType() const;
 
@@ -18,7 +18,7 @@ public:
 
 private:
     SpecialOfferType offerType;
-    Product product;
+    Product *product;
     double argument;
 
 };

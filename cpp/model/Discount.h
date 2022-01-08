@@ -7,7 +7,7 @@
 
 class Discount {
 public:
-    Discount(const std::string& description, double discountAmount, const Product& product);
+    Discount(const std::string& description, double discountAmount, Product *product);
 
     std::string getDescription() const;
 
@@ -18,7 +18,7 @@ public:
 private:
     std::string description;
     double discountAmount;
-    Product product;
+    Product *product;
 };
 
 

@@ -1,18 +1,18 @@
 #include "Receipt.h"
 
-std::vector<ReceiptItem> Receipt::getItems() const {
+std::vector<ReceiptItem*> Receipt::getItems() const {
     return items;
 }
 
-void Receipt::addDiscount(const Discount& discount) {
+void Receipt::addDiscount(Discount* discount) {
     discounts.push_back(discount);
 }
 
-void Receipt::addProduct(const Product& product, double quantity, double price, double totalPrice) {
+void Receipt::addProduct(Product* product, double quantity, double price, double totalPrice) {
     items.push_back(ReceiptItem(product, quantity, price, totalPrice));
 }
 
-std::vector<Discount> Receipt::getDiscounts() const {
+std::vector<Discount*> Receipt::getDiscounts() const {
     return discounts;
 }
 

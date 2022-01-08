@@ -8,14 +8,14 @@ class ProductQuantity {
 private:
 
 public:
-    ProductQuantity(const Product& product, double quantity);
+    ProductQuantity(Product* product, double quantity);
 
-    Product getProduct() const;
+    Product* getProduct() const;
 
     double getQuantity() const;
 
 private:
-    Product product;
+    Product* product;
     double quantity;
 
 };

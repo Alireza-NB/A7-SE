@@ -18,14 +18,14 @@ public:
     ReceiptPrinter(int columns) : columns(columns)
     {}
 
-    std::string printReceipt(const Receipt &receipt)
+    std::string printReceipt(Receipt* receipt)
     {
         std::string result;
-        for (const auto &item : receipt.getItems())
+        for (const auto &item : receipt->getItems())
         {
             result.append(presentReceiptItem(item));
         }
-        for (const auto &discount : receipt.getDiscounts())
+        for (const auto &discount : receipt->getDiscounts())
         {
             result.append(presentDiscount(discount));
         }
@@ -34,31 +34,31 @@ public:
         return result;
     }
 
-    std::string presentReceiptItem(const ReceiptItem &item) const
+    std::string presentReceiptItem(ReceiptItem* item) const
     {
-        std::string price = getFormattedNumberAsString(item.getTotalPrice(), 2);
-        std::string name = item.getProduct().getName();
+        std::string price = getFormattedNumberAsString(item->getTotalPrice(), 2);
+        std::string name = item->getProduct()->getName();
 
         std::string line = formatLineWithWhitespace(name, price);
 
-        if (item.getQuantity() != 1)
+        if (item->getQuantity() != 1)
         {
-            line += "  " + getFormattedNumberAsString(item.getPrice(), 2) + " * " + presentQuantity(item) + "\n";
+            line += "  " + getFormattedNumberAsString(item->getPrice(), 2) + " * " + presentQuantity(item) + "\n";
         }
         return line;
     }
 
-    std::string presentDiscount(const Discount &discount) const
+    std::string presentDiscount(Discount* discount) const
     {
-        std::string name = discount.getDescription() + "(" + discount.getProduct().getName() + ")";
-        std::string pricePresentation = getFormattedNumberAsString(discount.getDiscountAmount(), 2);
+        std::string name = discount->getDescription() + "(" + discount->getProduct()->getName() + ")";
+        std::string pricePresentation = getFormattedNumberAsString(discount->getDiscountAmount(), 2);
         return formatLineWithWhitespace(name, pricePresentation);
     }
 
-    std::string presentTotal(const Receipt &receipt) const
+    std::string presentTotal(Receipt* receipt) const
     {
         std::string total = "Total: ";
-        std::string pricePresentation = presentPrice(receipt.getTotalPrice());
+        std::string pricePresentation = presentPrice(receipt->getTotalPrice());
         return formatLineWithWhitespace(total, pricePresentation);
     }
 
@@ -78,11 +78,11 @@ public:
     std::string presentPrice(double price) const
     { return getFormattedNumberAsString(price, 2); }
 
-    static std::string presentQuantity(const ReceiptItem &item)
+    static std::string presentQuantity(ReceiptItem* item)
     {
-        return ProductUnit::Each == item.getProduct().getUnit()
-               ? getFormattedNumberAsString(item.getQuantity(), 0)
-               : getFormattedNumberAsString(item.getQuantity(), 3);
+        return ProductUnit::Each == item->getProduct()->getUnit()
+               ? getFormattedNumberAsString(item->getQuantity(), 0)
+               : getFormattedNumberAsString(item->getQuantity(), 3);
     }
 
 private:

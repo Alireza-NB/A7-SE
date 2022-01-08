@@ -1,13 +1,13 @@
 #include "Offer.h"
 
-Offer::Offer(const SpecialOfferType& offerType, const Product& product, double argument)
+Offer::Offer(const SpecialOfferType& offerType, Product *product, double argument)
         : offerType(offerType), product(product), argument(argument) {}
 
 SpecialOfferType Offer::getOfferType() const {
         return offerType;
 }
 
-Product Offer::getProduct() const {
+Product* Offer::getProduct() const {
         return product;
 }
 

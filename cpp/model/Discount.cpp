@@ -1,7 +1,7 @@
 #include "Discount.h"
 #include "Product.h"
 
-Discount::Discount(const std::string& description, double discountAmount, const Product& product)
+Discount::Discount(const std::string& description, double discountAmount, Product *product)
         : description(description), discountAmount(discountAmount), product(product) {}
 
 std::string Discount::getDescription() const {
@@ -12,6 +12,6 @@ double Discount::getDiscountAmount() const {
     return discountAmount;
 }
 
-Product Discount::getProduct() const {
+Product* Discount::getProduct() const {
     return product;
 }

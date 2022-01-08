@@ -1,12 +1,12 @@
 #include "Product.h"
 
-Product::Product(const std::string& name, const ProductUnit& unit) : name(name), unit(unit) {}
+Product::Product(const std::string& name, ProductUnit *unit) : name(name), unit(unit) {}
 
 std::string Product::getName() const {
     return name;
 }
 
-ProductUnit Product::getUnit() const {
+ProductUnit* Product::getUnit() const {
     return unit;
 }
 

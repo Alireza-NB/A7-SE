@@ -6,7 +6,7 @@
 
 class ReceiptItem {
 public:
-    ReceiptItem(const Product& product, double quantity, double price, double totalPrice);
+    ReceiptItem(Product* product, double quantity, double price, double totalPrice);
     Product getProduct() const;
 
     double getPrice() const;
@@ -20,7 +20,7 @@ public:
     bool operator!=(const ReceiptItem& rhs) const;
 
 private:
-    Product product;
+    Product* product;
     double price;
     double totalPrice;
     double quantity;

@@ -1,20 +1,20 @@
 #include "ShoppingCart.h"
 
-void addItemQuantity(const Product& product, double quantity);
+void addItemQuantity(Product* product, double quantity);
 
-std::vector<ProductQuantity> ShoppingCart::getItems() const {
+std::vector<ProductQuantity*> ShoppingCart::getItems() const {
     return items;
 }
 
-std::map<Product, double> ShoppingCart::getProductQuantities() const {
+std::map<Product*, double> ShoppingCart::getProductQuantities() const {
     return productQuantities;
 }
 
-void ShoppingCart::addItem(const Product& product) {
+void ShoppingCart::addItem(Product* product) {
     addItemQuantity(product, 1.0);
 }
 
-void ShoppingCart::addItemQuantity(const Product& product, double quantity) {
+void ShoppingCart::addItemQuantity(Product* product, double quantity) {
     items.emplace_back(product, quantity);
     if (productQuantities.find(product) != productQuantities.end()) {
         productQuantities[product] += quantity;
@@ -23,9 +23,9 @@ void ShoppingCart::addItemQuantity(const Product& product, double quantity) {
     }
 }
 
-void ShoppingCart::handleOffers(Receipt& receipt, std::map<Product, Offer> offers, SupermarketCatalog* catalog) {
+void ShoppingCart::handleOffers(Receipt* receipt, std::map<Product*, Offer> offers, SupermarketCatalog* catalog) {
     for (const auto& productQuantity : productQuantities) {
-        Product product = productQuantity.first;
+        Product* product = productQuantity.first;
         double quantity = productQuantity.second;
         if (offers.find(product) != offers.end()) {
             auto offer = offers[product];
@@ -90,7 +90,7 @@ void ShoppingCart::handleOffers(Receipt& receipt, std::map<Product, Offer> offer
             }
             
             if (discount != nullptr)
-                receipt.addDiscount(*discount);
+                receipt->addDiscount(*discount);
         }
     }
 }

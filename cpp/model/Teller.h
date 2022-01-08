@@ -12,13 +12,13 @@ class Teller {
 public:
     Teller(SupermarketCatalog* catalog);
 
-    void addSpecialOffer(SpecialOfferType offerType, const Product& product, double argument);
+    void addSpecialOffer(SpecialOfferType offerType, Product *product, double argument);
 
     Receipt checksOutArticlesFrom(ShoppingCart theCart);
 
 private:
     SupermarketCatalog* catalog;
-    std::map<Product, Offer> offers;
+    std::map<Product*, Offer> offers;
 };
 
 
