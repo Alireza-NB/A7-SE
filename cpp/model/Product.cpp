@@ -20,12 +20,7 @@ bool Product::operator!=(const Product& rhs) const {
 }
 
 bool Product::operator<(const Product& rhs) const {
-    if (name < rhs.name)
-        return true;
-    if (rhs.name < name)
-        return false;
-    return unit < rhs.unit;
-//    return (name < rhs.name) ? true : ( (name > rhs.name) ? false : (unit < rhs.unit));
+    return (name < rhs.name) ? true : ( (name > rhs.name) ? false : (unit < rhs.unit));
 }
 
 bool Product::operator>(const Product& rhs) const {
